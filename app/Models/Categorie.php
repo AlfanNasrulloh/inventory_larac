@@ -2,10 +2,30 @@
 
 namespace App\Models;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Categorie extends Model
 {
     //
+
+    use SoftDeletes;
+
     protected $fillable = ['name', 'photo', 'phone'];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function getPhotoAttribute($value)
+    {
+        if (!$value) {
+            return null;
+        }
+
+        return url(Storage::url($value));;
+    }
 }
