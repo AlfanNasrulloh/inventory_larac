@@ -58,7 +58,7 @@ class WarehouseService
     public function delete(int $id)
     {
 
-        $fields = ['id', 'photo'];;
+        $fields = ['id', 'photo'];
         $category = $this->warehouseRepository->getById($fields, $id);
 
         if ($category->photo) {
