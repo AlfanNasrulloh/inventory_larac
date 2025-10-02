@@ -61,7 +61,7 @@ class WarehouseController extends Controller
         try {
             $this->warehouseService->delete($id);
             return response()->json([
-                'message' => 'Warehouse Deleted Successffully!'
+                'message' => 'Warehouse Deleted Successfully!'
             ]);
         } catch (ModelNotFoundException $e) {
             return response()->json([
